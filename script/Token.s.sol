@@ -4,12 +4,20 @@ pragma solidity ^0.8.0;
 import {Script, console} from "forge-std/Script.sol";
 import {ERC20} from "../src/ERC20.sol";
 
-contract Token {
+contract Token is ERC20 {
     constructor(
         string memory _name,
         string memory _symbol,
         uint8 _decimals
     ) ERC20(_name, _symbol, _decimals) {}
+
+    function mint(address to, uint256 amount) external {
+        _mint(to, amount);
+    }
+
+    function burn(uint256 amount) external {
+        _burn(msg.sender, amount);
+    }
 }
 
 /*
@@ -28,7 +36,7 @@ contract TokenScript is Script {
 
         vm.startBroadcast(privateKey);
 
-        Token = new Token("My Token", "TKN", 18);
+        Token token = new Token("My Token", "TKN", 18);
         token.mint(account, 100);
 
         vm.stopBroadcast();

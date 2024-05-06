@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Unlicensed
 pragma solidity ^0.8.0;
 
-import {IEC20} from "./interfaces/IERC20.sol";
+import {IERC20} from "./interfaces/IERC20.sol";
 
 contract ERC20 is IERC20 {
     uint256 public totalSupply;

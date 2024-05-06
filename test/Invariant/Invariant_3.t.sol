@@ -49,7 +49,7 @@ contract WETH_Multi_Handler_Invariant_Test is Test {
         targetContract(address(manager));
     }
 
-    function invariant_eth_balance() public {
+    function invariant_eth_balance() public view {
         uint total = 0;
         for (uint i = 0; i < handlers.length - 1; i++) {
             total += handlers[i].wethBalance();
